@@ -1,0 +1,125 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>titl</title>
+<style>
+*{background:linear-gradient(to top, black,#494949);
+color:white;
+font-size: 20;
+background-attachment:fixed;
+margin-left:5px;
+}
+#history{display:none}
+.btn{
+width:50px;
+height:50px;
+margin:20px;
+background:gray;
+border: 2px solid white;
+}
+.btnh{
+width:80px;
+height:50px;
+margin:20px;
+background:gray;
+border: 2px solid white;
+}
+
+#btnb{
+width:80px
+height:60px;
+margin:20px;
+background:gray;
+background-color:#646601;
+color:yellow;
+border: 2px solid #AEB101;
+display:none;
+}
+.btn:hover{
+background:#494949;
+border: 2px solid white;
+}
+</style>
+</head>
+
+
+<body>
+<h1>Select One</h1>
+<button class="btn" onclick="guss(0)" >0</button>
+<button class="btn" onclick="guss(1)" >1</button>
+<button class="btn" onclick="guss(2)" >2</button>
+<button class="btn" onclick="guss(3)" >3</button>
+<p id="demo">The Winner...</p>
+<p id="cguss">The Computer Guss</p>
+<p id="score">SCORES</p>
+<button class="btnh" onclick="history()" >History</button>
+<div>
+<div id="history">
+</div>
+<button id="btnb" onclick="bloxfruit()" >Close</button>
+</div>
+</body>
+
+<script>
+//document.getElementById("history").style="display:none"
+var x,winner,color
+var p = 0
+var c = 0
+function guss(g){
+document.getElementsByClassName("btn")[0].style="background:gray;"
+document.getElementsByClassName("btn")[1].style="background:gray;"
+document.getElementsByClassName("btn")[2].style="background:gray;"
+document.getElementsByClassName("btn")[3].style="background:gray;"
+switch (g){
+case 0: x=0; break;
+case 1: x=1; break;
+case 2: x=2; break;
+case 3: x=3; break;
+}
+var y = Math.floor(Math.random()*4)
+ if(x==y){winner = "player"; p+= 1}else{winner = "Computer"; c+= 1}
+ 
+document.getElementsByClassName("btn")[x].style="background:red;"
+document.getElementsByClassName("btn")[y].style="background:green;"
+
+document.getElementById("demo").innerHTML=("Winner is"+ " " + winner)
+
+if(winner=="player")
+{document.getElementById("demo").style.color = "green"}
+else
+{document.getElementById("demo").style.color = "red"}
+
+
+document.getElementById("score").innerHTML=("Computer Score" + " = " + c + "</br>" + "Player Score" + " = " + p)
+document.getElementById("cguss").innerHTML=("Computer Guss Was" + " = " + y)
+
+
+var para = document.createElement("P")
+var his= document.createTextNode("player"+ " = " + x + " " +"Computer" + " = " + y + "    " + "winner was" + "   " +winner)
+
+
+para.appendChild(his)
+if(winner=="player")
+{para.style.color = "green"}
+else
+{para.style.color = "red"}
+
+
+var element = document.getElementById("history")
+element.appendChild(para)
+
+
+}
+
+
+
+function history(){
+document.getElementById("history").style="display:block"
+document.getElementById("btnb").style="display:block"}
+function bloxfruit(){
+document.getElementById("history").style.display="none"
+document.getElementById("btnb").style="display:none"}
+
+
+</script>
